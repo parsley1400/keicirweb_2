@@ -11,7 +11,7 @@ gem 'sinatra'
 gem 'sinatra-contrib'
 
 gem 'sinatra-activerecord'
-gem 'activerecord'
+gem 'bcrypt'
 gem 'rake'
 
 group :production do
