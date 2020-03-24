@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>KEICIR</title>
+    <link rel="stylesheet" href="/assets/css/circle.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0",user-scalable=yes>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+</head>
+
+<body>
+    <a href="/">
+        <i class="fas fa-angle-double-left yajirushi"></i>
+    </a>
+    <div id="topimg">
+    <% if @post.top_img == nil %>
+        <img class="topimg" src="/assets/images/noimg.jpg">
+    <% else %>
+        <img class="topimg" src="/assets/images/circle/<%= @post.top_img %>">
+    <% end %>
+    </div>
+<div class="contents">
+    <p class="midashi"><%= @post.name %></p>
+    <div class="tags">
+        <% if @post.tag_a == nil %>
+        <% else %>
+        <div class="tag tag1">
+            <div class="tagmaru tagmaru1"></div>
+            <p><%= @post.tag_a %></p>
+        </div>
+        <% end %>
+        <% if @post.tag_b == nil %>
+        <% else %>
+        <div class="tag tag2">
+            <div class="tagmaru tagmaru1"></div>
+            <p><%= @post.tag_b %></p>
+        </div>
+        <% end %>
+        <% if @post.tag_c == nil %>
+        <% else %>
+        <div class="tag tag3">
+            <div class="tagmaru tagmaru1"></div>
+            <p><%= @post.tag_c %></p>
+        </div>
+        <% end %>
+    </div>
+    <div class="icons">
+    <% if @post.twitter == nil %>
+    <% elsif @post.twitter =~ /(?:\p{Hiragana}|\p{Katakana}|[一-龠々])/ %>
+    <% else %>
+        <a href="https://twitter.com/<%= @post.twitter %>" target=”_blank”><i class="fab fa-twitter icon"></i></a>
+    <% end %>
+    <% if @post.instagram == nil %>
+    <% elsif @post.instagram.include?('http') %>
+        <a href="<%= @post.instagram %>" target=”_blank”><i class="fab fa-instagram icon"></i></a>
+    <% else %>
+        <a href="https://www.instagram.com/<%= @post.instagram %>" target=”_blank”><i class="fab fa-instagram icon"></i></a>
+    <% end %>
+    <% if @post.homepage == nil %>
+    <% elsif @post.homepage.include?('http') %>
+        <a href="<%= @post.homepage %>" target=”_blank”><i class="fas fa-home icon"></i></a>
+    <% end %>
+    </div>
+<div class="kihon_info">
+   <p>基本情報</p>
+    <table>
+        <tr class="colorcell" align="center"><td>人数</td><td><%= @post.population %>人</td></tr>
+        <tr align="center"><td>活動場所</td><td><%= @post.area %></td></tr>
+        <% if @post.money == nil %>
+        <tr class="colorcell" align="center"><td>入サー費</td><td>未定</td></tr>
+        <% else %>
+        <tr class="colorcell" align="center"><td>入サー費</td><td><%= @post.money %>円</td></tr>
+        <% end %>
+        <tr align="center"><td>活動日</td><td><%= @post.action_day %></td></tr>
+        <% if @post.serious == 1 %>
+        <tr class="colorcell" align="center"><td>本気度</td><td>✭✩✩✩✩</td></td></tr>
+        <%elsif @post.serious == 2 %>
+        <tr class="colorcell" align="center"><td>本気度</td><td>✭✭✩✩✩</td></td></tr>
+        <%elsif @post.serious == 3 %>
+        <tr class="colorcell" align="center"><td>本気度</td><td>✭✭✭✩✩</td></td></tr>
+        <%elsif @post.serious == 4 %>
+        <tr class="colorcell" align="center"><td>本気度</td><td>✭✭✭✭✩</td></td></tr>
+        <%elsif @post.serious == 5 %>
+        <tr class="colorcell" align="center"><td>本気度</td><td>✭✭✭✭✭</td></td></tr>
+        <% end %>
+    </table>
+</div>
+</div>
+
+    <div id="cells">
+        <div class="cell cell1">
+            <p>詳細</p>
+        </div>
+        <div class="cell cell2">
+            <p>雰囲気</p>
+        </div>
+        <div class="cell cell3">
+            <p>メディア</p>
+        </div>
+        <div class="cell cell4">
+            <p>年間</p>
+        </div>
+    </div>
+    <div class="article article1">
+        <table>
+        <% if @post.name == nil %>
+        <% name = "なし"%>
+            <tr class="colorcell_2"><th>団体名</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>団体名</th><td><%= @post.name %></td></tr>
+        <% end %>
+        <% if @post.byname == nil %>
+            <tr><th>団体名の略称・通称</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>団体名の略称・通称</th><td><%= @post.byname %></td></tr>
+        <% end %>
+        <% if @post.belonging == nil %>
+            <tr class="colorcell_2"><th>団体の所属</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>団体の所属</th><td><%= @post.belonging %></td></tr>
+        <% end %>
+        <% if @post.population  == nil %>
+            <tr><th>人数</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>人数</th><td><%= @post.population %>人</td></tr>
+        <% end %>
+        <% if @post.girls_population == nil %>
+            <tr class="colorcell_2"><th>女子の人数</th><td>なし</td></td></td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>女子の人数</th><td><%= @post.girls_population %>人</td></tr>
+        <% end %>
+        <% if @post.homepage == nil %>
+            <tr><th>ホームページ</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>ホームページ</th><td><a href="<%= @post.homepage %>" target=”_blank”><%= @post.homepage %></a></td></tr>
+        <% end %>
+        <% if @post.mailaddress == nil %>
+            <tr class="colorcell_2"><th>公式メールアドレス</th><td>なし/td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>公式メールアドレス</th><td><%= @post.mailaddress %></a></td></tr>
+        <% end %>
+        <% if @post.twitter == nil %>
+            <tr><th>公式twitterアカウント</th><td>なし</td></tr>
+        <% elsif @post.twitter =~ /(?:\p{Hiragana}|\p{Katakana}|[一-龠々])/ %>
+            <tr><th>公式twitterアカウント</th><td>@<%= @post.twitter %></td></tr>
+        <% else %>
+            <tr><th>公式twitterアカウント</th><td><a href="https://twitter.com/<%= @post.twitter %>" target=”_blank”>@<%= @post.twitter %></a></td></tr>
+        <% end %>
+        <% if @post.instagram == nil %>
+            <tr class="colorcell_2"><th>公式instagramアカウント</th><td>なし</td></tr>
+        <% elsif @post.instagram.include?('http') %>
+            <tr class="colorcell_2"><th>公式instagramアカウント</th><td><a href="<%= @post.instagram %>" target=”_blank”><%= @post.instagram %></a></td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>公式instagramアカウント</th><td><a href="https://www.instagram.com/<%= @post.instagram %>" target=”_blank”>@<%= @post.instagram %></a></td></tr>
+        <% end %>
+        <% if @post.youtube == nil %>
+            <tr><th>YouTube</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>YouTube</th><td><%= @post.youtube %></td></tr>
+        <% end %>
+        <% if @post.other_account == nil %>
+            <tr class="colorcell_2"><th>その他アカウント</th><td>なし</td></tr>
+        <% elsif @post.other_account.include?('http') %>
+            <tr class="colorcell_2"><th>その他アカウント</th><td><a href="<%= @post.other_account %>" target=”_blank”><%= @post.other_account %></td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>その他アカウント</th><td><%= @post.other_account %></td></tr>
+        <% end %>
+        <% if @post.money  == nil %>
+            <tr><th>入サー費</th><td>未定</td></tr>
+        <% else %>
+            <tr><th>入サー費</th><td><%= @post.money %>円</td></tr>
+        <% end %>
+        <% if @post.area == nil %>
+            <tr class="colorcell_2"><th>活動場所</th><td>未定</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>活動場所</th><td><%= @post.area %></td></tr>
+        <% end %>
+        <% if @post.belonging == nil %>
+            <tr><th>活動日</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>活動日</th><td><%= @post.action_day %></td></tr>
+        <% end %>
+        <% if @post.minimum_day == nil %>
+            <tr class="colorcell_2"><th>最低参加日数</th><td>未定</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>最低参加日数</th><td><%= @post.minimum_day %></td></tr>
+        <% end %>
+        <% if @post.action == nil %>
+            <tr><th>活動内容</th><td>未定</td></tr>
+        <% else %>
+            <tr><th>活動内容</th><td><%= @post.action %></td></tr>
+        <% end %>
+        <% if @post.action_career  == nil %>
+            <tr class="colorcell_2"><th>活動経歴</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>活動経歴</th><td><%= @post.action_career %></td></tr>
+        <% end %>
+        <% if @post.clubroom  == nil %>
+            <tr><th>部室</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>部室</th><td><%= @post.clubroom %></td></tr>
+        <% end %>
+        <% if @post.need_tool == nil %>
+            <tr class="colorcell_2"><th>練習に必要なもの</th><td>未定</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>練習に必要なもの</th><td><%= @post.need_tool %></td></tr>
+        <% end %>
+        <% if @post.sponsor == nil %>
+            <tr><th>スポンサー</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>スポンサー</th><td><%= @post.sponsor %></td></tr>
+        <% end %>
+        <% if @post.festival == nil %>
+            <tr class="colorcell_2"><th>三田祭（文化祭参加有無）</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>三田祭（文化祭参加有無）</th><td><%= @post.festival %></td></tr>
+        <% end %>
+        <% if @post.festival_doing == nil %>
+            <tr><th>三田祭で何をしたか</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>三田祭で何をしたか</th><td><%= @post.festival_doing %></td></tr>
+        <% end %><% if @post.intercollegiate == nil %>
+            <tr class="colorcell_2"><th>インカレサークルか</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>インカレサークルか</th><td><%= @post.intercollegiate %></td></tr>
+        <% end %>
+        <% if @post.intercollegiate_group == nil %>
+            <tr ><th>インカレサークルの合同活動団体</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>インカレサークルの合同活動団体</th><td><%= @post.intercollegiate_group %></td></tr>
+        <% end %>
+        <% if @post.affiliated_schools  == nil %>
+            <tr class="colorcell_2"><th>提携校・提携団体（インカレサークルではない）</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>提携校・提携団体（インカレサークルではない）</th><td><%= @post.affiliated_schools %></td></tr>
+        <% end %>
+        <% if @post.notkeio_people  == nil %>
+            <tr><th>慶應生以外の人数</th><td>なし</td></tr>
+        <% else %>
+            <tr><th>慶應生以外の人数</th><td><%= @post.notkeio_people %>人</td></tr>
+        <% end %><% if @post.notkeio_girls == nil %>
+            <tr class="colorcell_2"><th>慶應生以外の女子の人数</th><td>なし</td></tr>
+        <% else %>
+            <tr class="colorcell_2"><th>慶應生以外の女子の人数</th><td><%= @post.notkeio_girls %>人</td></tr>
+        <% end %>
+        </table>
+    </div>
+    <div class="article article2">
+      <div id="gray"></div>
+      <div class="funiki">
+       <div class="nomi">
+        <p>飲み頻度</p>
+       <div class="koumoku">
+        <% if @post.nomikai_frequency == 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_frequency == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_frequency == 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_frequency == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_frequency == 5 %>
+        <div class="maru" >1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru big">5</div>
+        <% end %>
+        </div>
+        <p>飲み激しさ</p>
+       <div class="koumoku">
+        <% if @post.nomikai_intensity == 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_intensity == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_intensity == 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_intensity == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.nomikai_intensity == 5 %>
+        <div class="maru" >1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru big">5</div>
+        <% end %>
+        </div>
+        </div>
+        <div class="couple">
+        <p>サークル内カップル</p>
+       <div class="koumoku">
+        <% if @post.couple== 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.couple == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.couple == 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.couple == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.couple == 5 %>
+        <div class="maru" >1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru big">5</div>
+        <% end %>
+        </div>
+        <p>イケメン・美女比率</p>
+        <div class="koumoku">
+        <% if @post.handsome_beauty == 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.handsome_beauty == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.handsome_beauty== 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.handsome_beauty == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.handsome_beauty == 5 %>
+        <div class="maru" >1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru big">5</div>
+        <% end %>
+        </div>
+        </div>
+        <div class="study">
+        <p>真面目度</p>
+       <div class="koumoku">
+        <% if @post.honest== 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.honest == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.honest == 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.honest == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.honest == 5 %>
+        <div class="maru" >1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru big">5</div>
+        <% end %>
+        </div>
+        <p>本気度</p>
+        <div class="koumoku">
+        <% if @post.serious == 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.serious == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.serious == 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.serious == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <div class="maru">5</div>
+        <% elsif @post.serious == 5 %>
+        <div class="maru" >1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <div class="maru big">5</div>
+        <% end %>
+        </div>
+        <p>過去問力</p>
+       <div class="koumoku">
+        <% if @post.past_questions == 1 %>
+        <div class="maru big">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <% elsif @post.past_questions == 2 %>
+        <div class="maru">1</div>
+        <div class="maru big">2</div>
+        <div class="maru">3</div>
+        <div class="maru">4</div>
+        <% elsif @post.past_questions == 3 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru big">3</div>
+        <div class="maru">4</div>
+        <% elsif @post.past_questions == 4 %>
+        <div class="maru">1</div>
+        <div class="maru">2</div>
+        <div class="maru">3</div>
+        <div class="maru big">4</div>
+        <% end %>
+        </div>
+        </div>
+        <div class="syusyoku">
+        <p>就職</p>
+        <p class="sub"><%= @post.find_work %></p>
+        </div>
+        <div class="sugoi">
+        <p>この団体のすごいやつ</p>
+        <p class="sub"><%= @post.introduction %></p>
+        </div>
+        </div>
+    </div>
+    <div class="article article3">
+      <div class="uls">
+       <ul>
+        <% if @post.pic_1 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_1 %>"></li>
+        <% end %>
+        <% if @post.pic_2 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_2 %>"></li>
+        <% end %>
+        <% if @post.pic_3 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_3 %>"></li>
+        <% end %>
+        <% if @post.pic_4 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_4 %>"></li>
+        <% end %>
+        <% if @post.pic_5 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_5 %>"></li>
+        <% end %>
+        <% if @post.pic_6 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_6 %>"></li>
+        <% end %>
+        <% if @post.pic_7 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_7 %>"></li>
+        <% end %>
+        <% if @post.pic_8 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_8 %>"></li>
+        <% end %>
+        <% if @post.pic_9 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_9 %>"></li>
+        <% end %>
+        <% if @post.pic_10 == nil %>
+        <% else %>
+           <li><img src="/assets/images/circle/<%= @post.pic_10 %>"></li>
+        <% end %>
+        <% if @post.mov_1 == nil %>
+        <% else %>
+           <li><video src="/assets/images/circle/<%= @post.mov_1 %>" controls></video></li>
+        <% end %>
+        <% if @post.mov_2 == nil %>
+        <% else %>
+           <li><video src="/assets/images/circle/<%= @post.mov_2 %>" controls></video></li>
+        <% end %>
+       </ul>
+       </div>
+    </div>
+    <div class="article article4">
+        <table>
+            <tr><th>4月</th><td><%= @post.april %></td></tr>
+            <tr><th>5月</th><td><%= @post.may %></td></tr>
+            <tr><th>6月</th><td><%= @post.june %></td></tr>
+            <tr><th>7月</th><td><%= @post.july %></td></tr>
+            <tr><th>8月</th><td><%= @post.august %></td></tr>
+            <tr><th>9月</th><td><%= @post.september %></td></tr>
+            <tr><th>10月</th><td><%= @post.october %></td></tr>
+            <tr><th>11月</th><td><%= @post.november %></td></tr>
+            <tr><th>12月</th><td><%= @post.december %></td></tr>
+            <tr><th>1月</th><td><%= @post.january %></td></tr>
+            <tr><th>2月</th><td><%= @post.february %></td></tr>
+            <tr><th>3月</th><td><%= @post.march %></td></tr>
+        </table>
+    </div>
+<script src="/assets/js/circle.js"></script>
+</body>
+</html>

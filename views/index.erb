@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>KEICIR</title>
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0",user-scalable=yes>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="/assets/js/jquery.flurry.js"></script>
+    <link href="https://fonts.googleapis.com/css?family=Sawarabi+Gothic&display=swap" rel="stylesheet">
+    <link href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" rel="stylesheet">
+    <title>KEICIR | 慶應生のためのサークル検索サイト</title>
+    <meta name="description" content="KEICIRは、慶應生のための、慶應大学のサークル検索サイトです。30以上の項目から、その学生団体がどのような活動を行っていてどのような雰囲気なのか、自分に合っているのか、知ることができます。">
+</head>
+
+<body>
+<header>
+    <i class="fas fa-search megane"></i>
+     <div class="search">
+     <div class="search_haikei"></div>
+     <div class="search_one">
+        <i class="fas fa-angle-left yajirushi"></i>
+        <form action="/search" method="post" class="form1">
+            <input class="search_text" type="text" placeholder="キーワード検索(ex:テニス)" name="search">
+            <button class="search_button"><i class="fas fa-search megane2"></i></button>
+        </form>
+        <p class="tag_search"><i class="fas fa-tag"></i>タグ検索</p>
+    </div>
+    <div class="search_two">
+        <p class="main_search c_search"><i class="fas fa-plus plus c_plus"></i><i class="fas fa-minus minus c_minus"></i>カテゴリー</p>
+        <div class="category sub_search">
+        <form action="/culture" method="post">
+            <p><button>文化系</button></p>
+        </form>
+        <form action="/science" method="post">
+            <p><button>学術系</button></p>
+        </form>
+        <form action="/music" method="post">
+            <p><button>音楽</button></p>
+        </form>
+        <form action="/sport" method="post">
+            <p><button>スポーツ</button></p>
+        </form>
+        <form action="/iinkai" method="post">
+            <p><button>委員会等</button></p>
+        </form>
+        </div>
+        <p class="main_search k_search"><i class="fas fa-plus plus k_plus"></i><i class="fas fa-minus minus k_minus"></i>公認</p>
+        <div class="konin sub_search">
+        <form action="/taiikukai" method="post">
+            <p><button>體育會</button></p>
+        </form>
+        <form action="/itai" method="post">
+            <p><button>医学部体育会</button></p>
+        </form>
+        <form action="/rikotai" method="post">
+            <p><button>理工学部体育会</button></p>
+        </form>
+        <form action="/culture_group" method="post">
+            <p><button>文化団体連盟</button></p>
+        </form>
+        <form action="/dokuritu" method="post">
+            <p><button>独立団体</button></p>
+        </form>
+        <form action="/fukuri" method="post">
+            <p><button>福利厚生団体</button></p>
+        </form>
+        </div>
+        <p class="main_search s_search"><i class="fas fa-plus plus s_plus"></i><i class="fas fa-minus minus s_minus"></i>その他</p>
+        <div class="sonota sub_search">
+        <form action="/intercollegiate" method="post">
+            <p><button>インカレ</button></p>
+        </form>
+        </div>
+    </div>
+    </div>
+</header>
+  <div id="square"></div>
+   <div class="container">
+<% @posts.each do |post| %>
+   <a href="/<%= post.id %>/post">
+    <div class="content">
+    <% if post.top_img == nil %>
+        <img src="/assets/images/noimg.jpg">
+    <% else %>
+        <img src="/assets/images/circle/<%= post.top_img %>">
+    <% end %>
+        <h2><%= post.name %></h2>
+    <div class="tags">
+        <% if post.tag_a == nil %>
+        <% else %>
+        <div class="tag tag1">
+            <div class="tagmaru tagmaru1"></div>
+            <p><%= post.tag_a %></p>
+        </div>
+        <% end %>
+        <% if post.tag_b == nil %>
+        <% else %>
+        <div class="tag tag2">
+            <div class="tagmaru tagmaru1"></div>
+            <p><%= post.tag_b %></p>
+        </div>
+        <% end %>
+        <% if post.tag_c == nil %>
+        <% else %>
+        <div class="tag tag3">
+            <div class="tagmaru tagmaru1"></div>
+            <p><%= post.tag_c %></p>
+        </div>
+        <% end %>
+    </div>
+        <p class="hitokoto"><%= post.one_word %></p>
+    </div>
+    </a>
+<% end %>
+    </div>
+
+    <script src="/assets/js/script.js"></script>
+</body>
+</html>
