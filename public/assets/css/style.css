@@ -16,6 +16,15 @@ a{
         overflow:hidden;
     }
 
+    #square{
+        width:100%;
+        height:100%;
+        position:fixed;
+        background-color:#eef0f2;
+        margin:0;
+        padding:0;
+    }
+
     header .megane{
         position:fixed;
         font-size:20px;
@@ -166,15 +175,6 @@ a{
     body{
         height:100%;
         width:100%;
-    }
-
-    #square{
-        width:100%;
-        height:100%;
-        position:fixed;
-        background-color:#eef0f2;
-        margin:0;
-        padding:0;
     }
 
     .container{
