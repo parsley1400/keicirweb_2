@@ -49,7 +49,7 @@
         <p class="main_search k_search"><i class="fas fa-plus plus k_plus"></i><i class="fas fa-minus minus k_minus"></i>公認</p>
         <div class="konin sub_search">
         <form action="/taiikukai" method="post">
-            <p><button>體育會</button></p>
+            <p><button>体育会</button></p>
         </form>
         <form action="/itai" method="post">
             <p><button>医学部体育会</button></p>
@@ -83,7 +83,7 @@
     <% if post.top_img == nil %>
         <img src="/assets/images/noimg.jpg">
     <% else %>
-        <img src="https://drive.google.com/uc?export=view&id=1vtKMvkK82dvlMzb0-xk3w41tJd-kAzap">
+        <img src="<%= post.top_img %>">
     <% end %>
         <h2><%= post.name %></h2>
     <div class="tags">
