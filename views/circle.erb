@@ -539,11 +539,11 @@
         <% end %>
         <% if @post.mov_1 == nil %>
         <% else %>
-           <li><iframe src="https://drive.google.com/file/d/19sHmui8OsQoIlxeHd46mtHW0OnYXt9Vy/preview" width="640" height="480"></iframe></li>
+           <li><%= @post.mov_1 %></li>
         <% end %>
         <% if @post.mov_2 == nil %>
         <% else %>
-           <li><video src="<%= @post.mov_2 %>" controls></video></li>
+           <li><%= @post.mov_2 %></li>
         <% end %>
        </ul>
        </div>
