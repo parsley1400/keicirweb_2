@@ -35,7 +35,7 @@ a{
     header .megane{
         position:fixed;
         font-size:20px;
-        top:12px;
+        top:0px;
         right:12px;
         z-index:5;
         color:#001f76;
