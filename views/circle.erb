@@ -18,7 +18,7 @@
     <% if @post.top_img == nil %>
         <img class="topimg" src="/assets/images/noimg.jpg">
     <% else %>
-        <img src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= post.top_img %>?alt=media">
+        <img src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.top_img %>?alt=media">
     <% end %>
     </div>
 <div class="contents">
@@ -539,11 +539,11 @@
         <% end %>
         <% if @post.mov_1 == nil %>
         <% else %>
-           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/2091.mp4?alt=media" controls></video></li>
+           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.mov_1 %>?alt=media" controls></video></li>
         <% end %>
         <% if @post.mov_2 == nil %>
         <% else %>
-           <li><%= @post.mov_2 %></li>
+           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.mov_2 %>?alt=media" controls></video></li>
         <% end %>
        </ul>
        </div>

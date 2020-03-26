@@ -1,6 +1,6 @@
 require 'csv'
 
-CSV.foreach('db/data_7.csv', headers: true) do |row|
+CSV.foreach('db/data_8.csv', headers: true) do |row|
   Post.create(
     name: row['name'],
     byname: row['byname'],
