@@ -18,7 +18,7 @@
     <% if @post.top_img == nil %>
         <img class="topimg" src="/assets/images/noimg.jpg">
     <% else %>
-        <img class="topimg" src="/assets/images/circle/<%= @post.top_img %>">
+        <img class="topimg" src="<%= @post.top_img %>">
     <% end %>
     </div>
 <div class="contents">
@@ -499,51 +499,51 @@
        <ul>
         <% if @post.pic_1 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_1 %>"></li>
+           <li><img src="<%= @post.pic_1 %>"></li>
         <% end %>
         <% if @post.pic_2 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_2 %>"></li>
+           <li><img src="<%= @post.pic_2 %>"></li>
         <% end %>
         <% if @post.pic_3 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_3 %>"></li>
+           <li><img src="<%= @post.pic_3 %>"></li>
         <% end %>
         <% if @post.pic_4 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_4 %>"></li>
+           <li><img src="<%= @post.pic_4 %>"></li>
         <% end %>
         <% if @post.pic_5 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_5 %>"></li>
+           <li><img src="<%= @post.pic_5 %>"></li>
         <% end %>
         <% if @post.pic_6 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_6 %>"></li>
+           <li><img src="<%= @post.pic_6 %>"></li>
         <% end %>
         <% if @post.pic_7 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_7 %>"></li>
+           <li><img src="<%= @post.pic_7 %>"></li>
         <% end %>
         <% if @post.pic_8 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_8 %>"></li>
+           <li><img src="<%= @post.pic_8 %>"></li>
         <% end %>
         <% if @post.pic_9 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_9 %>"></li>
+           <li><img src="<%= @post.pic_9 %>"></li>
         <% end %>
         <% if @post.pic_10 == nil %>
         <% else %>
-           <li><img src="/assets/images/circle/<%= @post.pic_10 %>"></li>
+           <li><img src="<%= @post.pic_10 %>"></li>
         <% end %>
         <% if @post.mov_1 == nil %>
         <% else %>
-           <li><video src="/assets/images/circle/<%= @post.mov_1 %>" controls></video></li>
+           <li><video src="<%= @post.mov_1 %>" controls></video></li>
         <% end %>
         <% if @post.mov_2 == nil %>
         <% else %>
-           <li><video src="/assets/images/circle/<%= @post.mov_2 %>" controls></video></li>
+           <li><video src="<%= @post.mov_2 %>" controls></video></li>
         <% end %>
        </ul>
        </div>
