@@ -1,5 +1,3 @@
-var bodyWidth = $("body").outerWidth();
-
 $(document).ready(function () {
   $('#square').flurry({
     character: "❀",
@@ -16,32 +14,26 @@ $(document).ready(function () {
   });
 });
 
-$(".search").css('margin-left', bodyWidth);
 
-var none = function () {
-  $(".content").css("display", "none");
-  $(".search_two").css("margin-top", "270px");
-}
+// var none = function () {
+//   $(".content").css("display", "none");
+//   $(".search_two").css("margin-top", "270px");
+// }
 
-var none_2 = function () {
-  $(".search").css("display", "none");
-  $(".container").css("margin-top", "10px");
-  $("#square").css("margin-top", "0px");
-}
+// var none_2 = function () {
+//   $(".search").css("display", "none");
+//   $(".container").css("margin-top", "10px");
+//   $("#square").css("margin-top", "0px");
+// }
 
 $(".megane").click(function () {
-  $(".container").css("margin-top", "-112px");
-  $("#square").css("margin-top", "-122px");
+  $(".container").css("display", "none");
   $(".search").css("display", "block");
-  $(".search").animate({ 'margin-left': 0 }, 300);
-  setTimeout("none()", 300);
 });
 
 $(".yajirushi").click(function () {
-  $(".content").css("display", "block");
-  $(".search_two").css("margin-top", "0px");
-  $(".search").animate({ 'margin-left': bodyWidth }, 300);
-  setTimeout("none_2()", 300);
+  $(".container").css("display", "block");
+  $(".search").css("display", "none");
 });
 
 $(".c_search").click(function () {
