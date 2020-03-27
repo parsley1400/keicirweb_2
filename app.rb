@@ -56,7 +56,7 @@ post '/itai' do
 end
 
 post '/rikotai' do
-  @searchs = Post.where(tag_c: "リコタイ")
+  @searchs = Post.where(tag_c: "理工学部体育会")
   erb :search
 end
 
