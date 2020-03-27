@@ -539,11 +539,11 @@
         <% end %>
         <% if @post.mov_1 == nil %>
         <% else %>
-           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.mov_1 %>?alt=media" controls></video></li>
+           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.mov_1 %>?alt=media" controls preload="auto"></video></li>
         <% end %>
         <% if @post.mov_2 == nil %>
         <% else %>
-           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.mov_2 %>?alt=media" controls></video></li>
+           <li><video src="https://firebasestorage.googleapis.com/v0/b/keicirweb.appspot.com/o/<%= @post.mov_2 %>?alt=media" controls preload="auto"></video></li>
         <% end %>
        </ul>
        </div>
