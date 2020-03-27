@@ -32,7 +32,7 @@ $(".megane").click(function () {
 });
 
 $(".yajirushi").click(function () {
-  $(".container").css("display", "block");
+  $(".container").css("display", "flex");
   $(".search").css("display", "none");
 });
 
