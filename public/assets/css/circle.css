@@ -4,14 +4,6 @@
     font-family: 'Sawarabi Gothic', sans-serif;
 }
 @media screen and (max-width: 480px){
-    .yajirushi{
-        font-size:30px;
-        position:fixed;
-        top:8px;
-        left:8px;
-        z-index:3;
-        color:#001f76;
-    }
 
     .topimg{
         width:100%;
@@ -320,14 +312,6 @@
 }
 
 @media screen and (min-width: 480px){
-    .yajirushi{
-        font-size:30px;
-        position:fixed;
-        top:8px;
-        left:8px;
-        z-index:3;
-        color:#001f76;
-    }
 
     #topimg{
         width:100%;
@@ -677,14 +661,6 @@
 }
 
 @media screen and (min-width: 897px){
-    .yajirushi{
-        font-size:30px;
-        position:fixed;
-        top:8px;
-        left:8px;
-        z-index:3;
-        color:#001f76;
-    }
 
     #topimg{
         width:100%;
